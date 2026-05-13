@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <input type="text" id="t1"><br>
+        <select name="colors"id='s1'>
+            <option value="red">
+                red
+            </option>
+            <option value="blue">
+                blue
+            </option>
+            <option value="grey">
+                grey
+            </option>
+        </select>
+    <div id =d1>Here</div>
+
+<script>
+    const select = document.getElementById('s1');
+    var color = "red"
+    var txt ="";
+select.addEventListener('change', function handleChange(event) {
+    color=event.target.value;
+    console.log(event.target.value); 
+    document.getElementById('d1').style.color =color;
+    
+});
+t1.addEventListener('change',function(event){
+     txt =event.target.value;
+     document.getElementById('d1').innerHTML = txt.toUpperCase();
+    
+})
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE >
+<html lang="en">        
+
+<head>
+    <meta charset="UTF-8"/>
+    
+    <title>Mouse Coordinates</title>
+    <style> 
+
+        body {
+
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;      
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+
+
+
+            color: #333;
+          }
+        </style>
+</head>
+<body>
+    <h1>Mouse Coordinates</h1>
+    <p>Click anywhere on the page to get the mouse coordinates.</p>
+    <script >document.addEventListener('click', function(event) {
+    var x = event.clientX;
+    var y = event.clientY;
+    console.log(`Mouse clicked at: X=${x}, Y=${y}`);
+    alert(`Mouse clicked at: X=${x}, Y=${y}`);
+});</script>
+</body>
+</html>                 
+
+
+

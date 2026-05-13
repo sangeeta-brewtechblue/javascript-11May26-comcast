@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <button onclick="incrementCtr()">Click to increment</button>
+   
+    <div id ="d1" >Here</div>
+
+    <button id="toggleBn" onclick="toggleCaption()">ON</button>
+
+<script>
+          var counter =0; 
+          var isOn = false;
+          function incrementCtr(){
+              counter = counter +1;
+              document.getElementById("d1").innerText = counter;
+          }
+
+          function toggleCaption(){
+            isOn = !isOn;
+
+            if(isOn)
+              document.getElementById("toggleBn").innerText = "ON";
+            else
+              document.getElementById("toggleBn").innerText = "OFF";
+
+          }
+
+
+</script> 
+</body>
+</html> 
