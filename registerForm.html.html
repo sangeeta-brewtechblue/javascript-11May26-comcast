@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        /* CSS Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 { text-align: center; color: #333; margin-bottom: 1.5rem; }
+
+        .form-group { margin-bottom: 1rem; }
+
+        label { display: block; margin-bottom: 5px; font-weight: 600; color: #555; }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        input.invalid {
+            border-color: #d9534f;
+            background-color: #fff8f8;
+        }
+
+        .error-msg {
+            color: #d9534f;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            min-height: 1em;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Create Account</h2>
+    <form id="registrationForm" novalidate>
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="John">
+            <div class="error-msg" id="fnameError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Doe">
+            <div class="error-msg" id="lnameError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="john@example.com">
+            <div class="error-msg" id="emailError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="10-digit number">
+            <div class="error-msg" id="phoneError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Min 8 characters">
+            <div class="error-msg" id="passwordError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" placeholder="Repeat password">
+            <div class="error-msg" id="confirmPasswordError"></div>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    // JavaScript Logic
+    const form = document.getElementById('registrationForm');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        let isValid = true;
+
+        // Validation Helper
+        const validateField = (id, condition, message) => {
+            const input = document.getElementById(id);
+            const errorDiv = document.getElementById(id + 'Error');
+            
+            if (condition) {
+                errorDiv.textContent = "";
+                input.classList.remove('invalid');
+            } else {
+                errorDiv.textContent = message;
+                input.classList.add('invalid');
+                isValid = false;
+            }
+        };
+
+        // Logic for each field
+        const fname = document.getElementById('fname').value.trim();
+        const lname = document.getElementById('lname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        validateField('fname', fname.length > 0, "First name is required");
+        validateField('lname', lname.length > 0, "Last name is required");
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        validateField('email', emailRegex.test(email), "Please enter a valid email");
+
+        const phoneRegex = /^[0-9]{10}$/;
+        validateField('phone', phoneRegex.test(phone), "Enter a valid 10-digit phone number");
+
+        validateField('password', password.length >= 8, "Password must be at least 8 characters");
+
+        validateField('confirmPassword', 
+            confirmPassword === password && confirmPassword !== "", 
+            "Passwords do not match"
+        );
+
+        if (isValid) {
+            alert("Registration successful!");
+            // form.submit(); // Real submission logic here
+        }
+    });
+</script>
+
+</body>
+</html>
