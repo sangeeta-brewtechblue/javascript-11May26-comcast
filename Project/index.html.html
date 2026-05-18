@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 CRUD Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; max-width: 600px; }
+        form { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        input { margin: 5px 0; padding: 8px; width: 100%; box-sizing: border-box; }
+        button { padding: 10px; background-color: #007BFF; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .user-card { border: 1px solid #ddd; padding: 10px; margin: 10px 0; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
+        .actions button { margin-left: 5px; background-color: #dc3545; }
+        .actions .edit-btn { background-color: #ffc107; color: black; }
+    </style>
+</head>
+<body>
+
+    <h2>User Management (CRUD)</h2>
+    
+    <!-- Form for Creating/Updating Users -->
+    <form id="userForm">
+        <input type="hidden" id="userId">
+        <input type="text" id="userName" placeholder="Name" required>
+        <input type="email" id="userEmail" placeholder="Email" required>
+        <button type="submit" id="submitBtn">Add User</button>
+    </form>
+
+    <h3>User List</h3>
+    <div id="userList">Loading users...</div>
+
+    <!-- Link your JavaScript file -->
+    <script src="app.js"></script>
+</body>
+</html>
